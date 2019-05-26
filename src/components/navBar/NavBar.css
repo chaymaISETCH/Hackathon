@@ -1,0 +1,11 @@
+.nav-container{
+    width: 100%;
+    background-color: #4d4d4d;
+    height: 50px;
+    display: flex;
+    color: #bc1c33;
+}
+.nav-container img {
+    width: 60px;
+    margin: 12px 50px 5px 30px;
+}

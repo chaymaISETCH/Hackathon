@@ -1,0 +1,20 @@
+.challenges-list{
+    height: 500px;
+    overflow: scroll;
+    /* height: -webkit-fill-available; */
+    flex: 3 1;
+}
+.item{    
+    background-color: white;
+    padding: 2%;
+    margin: 0 20px 20px 20px;
+}
+.card-body {
+    padding: 1%;
+}
+.challenge{
+    margin-left: 5%;
+    margin-top: 50px;
+    justify-content: center;
+    display: flex;
+}
