@@ -1,32 +1,30 @@
 import React from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
-import "./Train.css";
-
-
-
-export default class Tabs extends React.Component {
+import SignUp from "./SignUp"
+import SignIn from "./SignIn"
+import { connect } from "react-redux"
+class Tabs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeTab: '1'
+      activeTab: props.activeTab
     };
   }
-  componentDidUpdate(prevProps){
-      if(prevProps.result !== this.props.result){
-          this.toggle('2')
-      }
-  }
+
+
   toggle = (tab) => {
     if (this.state.activeTab !== tab) {
-    
       this.setState({
         activeTab: tab
       });
     }
   }
-  
-  render(){
+  componentDidUpdate(prevProps){
+    if(this.props.activeTab !== prevProps.activeTab)
+      this.setState({activeTab : this.props.activeTab})
+  }
+  render() {
     return (
       <div>
         <Nav tabs>
@@ -35,7 +33,7 @@ export default class Tabs extends React.Component {
               className={classnames({ active: this.state.activeTab === '1' })}
               onClick={() => { this.toggle('1'); }}
             >
-              Instructions
+              Sign Up
             </NavLink>
           </NavItem>
           <NavItem>
@@ -43,34 +41,23 @@ export default class Tabs extends React.Component {
               className={classnames({ active: this.state.activeTab === '2' })}
               onClick={() => { this.toggle('2'); }}
             >
-              Output
+              Sign In
             </NavLink>
           </NavItem>
         </Nav>
         <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1">
-            <Row>
-              <Col sm="12">
-                <div style={{flex:1}}>
-                    <p className="title">{this.props.challenge.title}</p>
-                    <p>{this.props.challenge.details}</p>
-
-                </div>
-              </Col>
-            </Row>
+            <SignUp />
           </TabPane>
           <TabPane tabId="2">
-            <Row>
-              <Col sm="12">
-                <div style={{flex:1}}>
-                    <p className="title">Result : {this.props.result}</p>
-                </div>
-              </Col>
-            </Row>
+            <SignIn />
           </TabPane>
         </TabContent>
       </div>
     );
   }
 }
-
+const mapStateToProps = (state) => ({
+  activeTab : state.user.activeTab
+})
+export default connect(mapStateToProps)(Tabs)

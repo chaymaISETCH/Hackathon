@@ -73,19 +73,19 @@ class Editor extends React.Component{
    }).catch(e=>
      console.log("error"+e)
    )
-      }).catch(e=>
-        console.log("error"+e)
-      )
+    }).catch(e=>
+      console.log("error"+e)
+    )
   
-    }
+  }
 theme = ["monokai", "github", "tomorrow", "kuroir", "twilight", "xcode", "textmate", "solarized_dark", "solarized_light", "terminal"]
  render(){
   return (
     <div style={{flex : 3}}>
-      <Language languagesList={["javascript","java","php"]} />
+      <Language languagesList={["JavaScript","Java","PHP","C","C++","Ruby","Python","Swift","C#","GO"]} />
       <Input type="select" className="choose-language" onChange={e=>this.setState({theme : e.target.value})}>
-              <option value="monokai">Choose Theme :</option>
-              {this.theme.map(l=><option key={l} value={l}>{l}</option>)}
+          <option value="monokai">Choose Theme :</option>
+          {this.theme.map(l=><option key={l} value={l}>{l}</option>)}
       </Input>
       <AceEditor
       placeholder="GO !!"
@@ -109,7 +109,7 @@ theme = ["monokai", "github", "tomorrow", "kuroir", "twilight", "xcode", "textma
       }}/>    
       <Button onClick={this.run} className="btn">Run Code</Button>  
       <Button onClick={this.run} className="btn">Run Tests</Button>  
-      <Button onClick={this.run} className="btn">Clear Editor</Button>  
+      <Button onClick={()=>this.setState({code:""})} className="btn">Clear Editor</Button>  
 
     </div>
   );

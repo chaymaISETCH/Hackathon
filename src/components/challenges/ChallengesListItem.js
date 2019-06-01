@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import { Link } from "react-router-dom";
 
-class Example extends Component {
+class ChallengeListItem extends Component {
   constructor(props) {
     super(props);
-    
     this.state = { collapse: false };
   }
 
   toggle = () => {
-    this.setState(state => ({ collapse: !state.collapse }));
+    this.setState({ collapse: !this.state.collapse });
   }
 
   render() {
@@ -25,7 +24,7 @@ class Example extends Component {
             state: { challenge: this.props.challenge }
           }}
         >
-          <Button color="primary" style={{ marginRight: '1rem' }}>Train</Button>
+          <Button color="primary" style={{ marginRight: '1rem' }}>Participate</Button>
         </Link>
         <Button color="primary" onClick={this.toggle}  >Details</Button>
         <Collapse isOpen={this.state.collapse} style={{marginTop: '1px'}}>
@@ -40,4 +39,4 @@ class Example extends Component {
   }
 }
 
-export default Example;
+export default ChallengeListItem;

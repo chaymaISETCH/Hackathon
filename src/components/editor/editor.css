@@ -6,4 +6,11 @@
 .btn{
     background-color: #272822;
     border-radius: 0;
+    letter-spacing: 3px;
+    line-height: 1.5;
+    font-weight: bold;
+    
+}
+.btn:hover{
+    background-color:#feb800
 }
