@@ -2,13 +2,14 @@ import React from 'react';
 import FilterBox from "./FilterBox";
 import "./ChallengesList.css";
 import { connect } from "react-redux";
-import { getAllChallenges } from "../../redux/actions/actions";
+import { getAllChallenges, deleteChallenge } from "../../redux/actions/actions";
 import Item from "./ChallengesListItem";
 class ChallengesList extends React.Component{
 
   getAllChallenges=()=>{
     let url = "http://localhost:8888/api/challenges/"
     fetch(url, {
+      
       method: 'get',
       headers: {'Content-Type': 'application/json'},
     }).then((response)=> {
@@ -30,7 +31,7 @@ class ChallengesList extends React.Component{
         <div className="challenges-list">
             {this.props.challenges?this.props.challenges
               .filter(c=>c.title.toUpperCase().match(this.props.title.toUpperCase()))
-              .map(challenge=><Item key={challenge._id} challenge={challenge} />):null
+              .map(challenge=><Item delete={this.props.deleteChallenge} key={challenge._id} challenge={challenge} />):null
             }
         </div>
       </div>
@@ -45,7 +46,8 @@ const mapStateToProps = state=>({
   title : state.challenge.title||""
 })
 const mapDisptachToProps=dispatch=>({
-  getAllChallenges : challenges=> dispatch(getAllChallenges(challenges))
+  getAllChallenges : challenges=> dispatch(getAllChallenges(challenges)),
+  deleteChallenge : id => dispatch(deleteChallenge(id))
 })
 export default connect(
   mapStateToProps,

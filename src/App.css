@@ -1,3 +1,10 @@
 .App {
     background-color: #f5f6f7;
+    
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+
 }

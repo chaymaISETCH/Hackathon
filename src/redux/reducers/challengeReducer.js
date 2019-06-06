@@ -16,6 +16,8 @@ const challengeReducer = (state={},action)=>{
             return {...state,challenges:state.challenges.filter(m=>m._id!==action._id)}
         case FILTER_BY_TITLE : 
             return {...state, title : action.title}
+
+        
         case EDIT_CHALLENGE:
             return {...state,challenges:state.challenges.map(m=>{
                 if(m._id===action.challenge._id)

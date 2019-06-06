@@ -2,27 +2,19 @@
 import React, { PropTypes } from 'react';  
 import { connect } from 'react-redux';  
 import { toggleShow, authenticated } from "../redux/actions/actions"
+import { Route, Redirect } from 'react-router'
 
 export default function (ComposedComponent) {  
-  class WithAuth extends React.Component {
+  const  WithAuth =(props) =>{
  
-    componentDidUpdate(prevProps) {
-      if(prevProps.isAuthenticated !== this.props.isAuthenticated){
-        if (!this.props.isAuthenticated) {
-          this.props.history.push('/')
-        }
-      }
+  
+    if(props.isAuthenticated)
+      return <ComposedComponent {...props} />
+    props.toggle()
+    return <Redirect to="/"/>
     }
-
+  
    
-    render() {
-      return (
-        <div>
-          { this.props.isAuthenticated ? <ComposedComponent {...this.props} /> : null }
-        </div>
-      );
-    }
-  }
 
   const mapStateToProps = (state) => ({
       isAuthenticated: state.user.isAuthenticated

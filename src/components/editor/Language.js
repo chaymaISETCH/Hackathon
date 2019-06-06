@@ -1,5 +1,5 @@
 import React from 'react';
-import "./editor.css";
+import "./Editor.css";
 import { Input } from 'reactstrap';
 
 const Language=({languagesList})=> {

@@ -1,6 +1,8 @@
 import React from 'react';
 import brace from 'brace';
+import Timer from "../timer/Timer"
 import { connect } from "react-redux";
+import Tests from "./Tests"
 import Language from "./Language"
 import AceEditor from 'react-ace';
 import { Button, Input } from 'reactstrap';
@@ -82,6 +84,7 @@ theme = ["monokai", "github", "tomorrow", "kuroir", "twilight", "xcode", "textma
  render(){
   return (
     <div style={{flex : 3}}>
+      <Timer />
       <Language languagesList={["JavaScript","Java","PHP","C","C++","Ruby","Python","Swift","C#","GO"]} />
       <Input type="select" className="choose-language" onChange={e=>this.setState({theme : e.target.value})}>
           <option value="monokai">Choose Theme :</option>
@@ -98,7 +101,7 @@ theme = ["monokai", "github", "tomorrow", "kuroir", "twilight", "xcode", "textma
       showGutter={true}
       highlightActiveLine={true}
       value={this.state.code}
-      style={{flex : 3,width:"unset"}}
+      style={{flex : 3,width:"unset",height:"300px"}}
       setOptions={{
       enableBasicAutocompletion: true,
       enableLiveAutocompletion: true,
@@ -107,6 +110,12 @@ theme = ["monokai", "github", "tomorrow", "kuroir", "twilight", "xcode", "textma
       tabSize: 2,
       
       }}/>    
+      <Tests       theme={this.state.theme}
+ tests="//Tests
+var assert = require('assert');
+assert.equal(add(5,2), 7); //OK
+assert.equal(add(50,10), 70); //OK
+assert.equal(add(9,3), 70);"/>
       <Button onClick={this.run} className="btn">Run Code</Button>  
       <Button onClick={this.run} className="btn">Run Tests</Button>  
       <Button onClick={()=>this.setState({code:""})} className="btn">Clear Editor</Button>  

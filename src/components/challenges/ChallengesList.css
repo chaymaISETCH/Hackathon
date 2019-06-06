@@ -4,6 +4,15 @@
     /* height: -webkit-fill-available; */
     flex: 3 1;
 }
+.link{
+    cursor: pointer;
+}
+.manage-challenge{
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+   
+}
 .item{    
     background-color: white;
     padding: 2%;
@@ -13,6 +22,7 @@
     padding: 1%;
 }
 .challenge{
+    width: 100%;
     margin-left: 5%;
     margin-top: 50px;
     justify-content: center;

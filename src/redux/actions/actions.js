@@ -28,9 +28,13 @@ export const TOGGLE_SHOW ="TOGGLE_SHOW"
 export const AUTHENTICATED = "AUTHENTICATED" 
 export const SET_CURRENT_USER = "SET_CURRENT_USER"
 export const CHANGE_ACTIVE_TAB = "CHANGE_ACTIVE_TAB"
+export const TOGGLE_NESTED_MENU ="TOGGLE_NESTED_MENU"
 //show or hide modal sign up sign in
 export const toggleShow=()=>{
     return {type : TOGGLE_SHOW}
+}
+export const toggleNestedMenu=()=>{
+    return {type:TOGGLE_NESTED_MENU}
 }
 export const authenticated = (isAuthenticated) => {
     return {type : AUTHENTICATED,isAuthenticated}
